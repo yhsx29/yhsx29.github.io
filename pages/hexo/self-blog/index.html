@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="default"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>个人博客搭建 | 萤火虫</title><meta name="description" content="个人博客简单搭建"><meta name="keywords" content="Github,Hexo,Butterfly"><meta name="author" content="萤火虫"><meta name="copyright" content="萤火虫"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://gitee.com/yhsx29/File/raw/master/img/sys/favicon.png"><link rel="canonical" href="https://yhsx29.gitee.io/hexo/pages/hexo/self-blog/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="preconnect" href="//zz.bdstatic.com"/><meta property="og:type" content="article"><meta property="og:title" content="个人博客搭建"><meta property="og:url" content="https://yhsx29.gitee.io/hexo/pages/hexo/self-blog/"><meta property="og:site_name" content="萤火虫"><meta property="og:description" content="个人博客简单搭建"><meta property="og:image" content="https://gitee.com/yhsx29/File/raw/master/img/sys/home.jpg"><meta property="article:published_time" content="2020-07-22T15:09:20.000Z"><meta property="article:modified_time" content="2020-07-24T14:59:32.330Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/hexo/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="prev" title="NPM 的安装与使用" href="https://yhsx29.gitee.io/hexo/pages/hexo/npm-install/"><link rel="next" title="MarkDown的使用" href="https://yhsx29.gitee.io/hexo/pages/markdown/markdown-use/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5/js/md5.min.js"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/hexo/',
+  algolia: {"appId":"ACZLAM1MPI","apiKey":"a05e3b1a3eca95e00f95bed3af5ac4a9","indexName":"github","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: true,
+  fancybox: false,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://gitee.com/yhsx29/File/raw/master/img/sys/avatar.jpg" onerror="onerror=null;src='https://gitee.com/yhsx29/File/raw/master/img/sys/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/hexo/archives/"><div class="headline">文章</div><div class="length_num">6</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/hexo/tags/"><div class="headline">标签</div><div class="length_num">7</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/hexo/categories/"><div class="headline">分类</div><div class="length_num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/hexo/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 目录</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/hexo/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/hexo/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hexo/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装npm"><span class="toc-number">1.</span> <span class="toc-text">安装npm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Git"><span class="toc-number">2.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-hexo"><span class="toc-number">3.</span> <span class="toc-text">安装 hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载Butterfly样式"><span class="toc-number">4.</span> <span class="toc-text">下载Butterfly样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开启-Algolia-search，查询功能"><span class="toc-number">5.</span> <span class="toc-text">开启 Algolia search，查询功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评论功能，启用gitalk"><span class="toc-number">6.</span> <span class="toc-text">评论功能，启用gitalk</span></a></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/yhsx29/File/raw/master/img/sys/home.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/hexo/">萤火虫</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hexo/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/hexo/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/hexo/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/hexo/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 目录</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/hexo/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/hexo/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hexo/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/hexo/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">个人博客搭建</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-07-22 23:09:20"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-07-22</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-07-24 22:59:32"><i class="fas fa-history fa-fw"></i> 更新于 2020-07-24</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/hexo/categories/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">1.3k</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 5 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="far fa-comments fa-fw post-meta__icon"></i><span>评论数:</span><a href="/hexo/pages/hexo/self-blog/#post-comment"><span class="gitalk-comment-count comment-count"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h2><p><a href="../../hexo/npm-install">npm安装教程</a></p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><ol>
+<li><p><a href="../../github/git-install">Git安装教程</a>，</p>
+</li>
+<li><p>创建站点仓库</p>
+<p>仓库名称为 ：<code>[自己的用户名]</code> <code>.github.io</code>,(<font color='red'> 不是<code>.github.io</code>结尾的不能创建静态地址</font>)</p>
+<p>进入到仓库设置页面，下拉到<code>GitHub Pages</code> 处，<font color = 'red'><code>Source</code></font> 选择第一个 <code>master branch</code>,然后会生成你的站点，如图。</p>
+</li>
+</ol>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/2020/image-20200723084247431.png" alt="image-20200723084247431"></p>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/2020/image-20200723085736783.png" alt=""></p>
+<hr>
+<h2 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h2><p><a href="https://hexo.io/" target="_blank" rel="noopener"><strong>hexo 官网</strong></a></p>
+<ol>
+<li><p>打开cmd,输入：<code>npm install -g hexo-cli</code> 。</p>
+</li>
+<li><p>创建一个工作目录 (我的是：D:\tools\doc\hexo)，打开cmd,进入到工作目录，输入：<code>hexo init</code> 进行初始化</p>
+</li>
+</ol>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/2020/002.png" alt=""></p>
+<p>目录结构:<img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/2020/image-20200723033336140.png" alt=""></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">themes:存放主题</span><br><span class="line">source:存放md文件</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>配置_config.yml：</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">网站标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">签名</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">介绍</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">作者</span></span><br><span class="line"><span class="comment"># 语言</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">''</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://yhsx29.github.io/</span> <span class="comment"># GitHub Page 生成的站点</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="comment"># 部署配置</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span> <span class="comment"># 发布类型</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:yhsx29/yhsx29.github.io.git</span> <span class="comment">#仓库 SSH 地址，Git要配置好SSH公钥</span></span><br><span class="line">  <span class="attr">barnch:</span> <span class="string">master</span> <span class="comment"># 分支</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>输入 <code>hexo n demo</code> 创建新的文件 <code>demo.md</code>,文件路径为 <code>source/_post/demo.md</code>,编辑md。（<a href="../../markdown/markdown-use">MarkDown的使用</a>）</p>
+</li>
+<li><p>输入 <code>hexo g</code> 生成静态文件，文件存放在 <code>public</code> 文件夹下</p>
+</li>
+<li><p>输入 <code>hexo s</code> 本地服务启动，打开浏览器，输入地址：<code>http://localhost:4000/</code> 即可浏览</p>
+</li>
+<li><p>输入 <code>hexo d</code> 部署到仓库中</p>
+</li>
+</ol>
+<hr>
+<h2 id="下载Butterfly样式"><a href="#下载Butterfly样式" class="headerlink" title="下载Butterfly样式"></a>下载Butterfly样式</h2><ol>
+<li><p><code>git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</code> </p>
+<p>打开<code>themes/butterfly</code> 查看结构</p>
+</li>
+</ol>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/image-20200723195952977.png" alt="image-20200723195952977"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source:资源文件夹</span><br><span class="line">_config.yml:默认配置</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>创建自已配置：将默认配置剪切到 <code>source/_data</code> 路径下，修改名称为 <code>butterfly.yml</code>(防止更新主题时，配置被覆盖，更新后要及除默认配置，因为默认配置优先级高)</p>
+</li>
+<li><p>打开站点的_config.yml配置文件，将里面的 <code>theme: landscape</code> 改为 <code>theme: butterfly</code> 即可。</p>
+</li>
+<li><p>打开``butterfly.yml`配置 butterfly:</p>
+</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将首页英文改为中文</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">首页:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="string">时间轴:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="string">标签:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="string">分类:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-folder-open</span></span><br><span class="line">  <span class="string">目录||fas</span> <span class="attr">fa-list:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">Music</span> <span class="string">||</span> <span class="string">/music/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-music</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">Movie</span> <span class="string">||</span> <span class="string">/movies/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-video</span></span><br><span class="line">  <span class="string">链接:</span> <span class="string">/link/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-link</span></span><br><span class="line">  <span class="string">关于:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-heart‘</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># Favicon（網站圖標）</span></span><br><span class="line"><span class="attr">favicon:</span> <span class="string">/img/favicon.png</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Avatar (頭像)</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">img:</span> <span class="string">/img/avatar.jpg</span></span><br><span class="line">  <span class="attr">effect:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Mouse click effects: Heart symbol (鼠標點擊效果: 愛心)</span></span><br><span class="line"><span class="attr">click_heart:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Mouse click effects: words (鼠標點擊效果: 文字)</span></span><br><span class="line"><span class="attr">ClickShowText:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">text:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">I</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">LOVE</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">YOU</span></span><br><span class="line">  <span class="attr">fontSize:</span> <span class="string">15px</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><p>创建标签，分类 ，链接，关于 主页</p>
+<ol>
+<li>打开cmd到工作空间下，输入 </li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建 标签主页，文件地址 source/tags/index.md</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">new</span> <span class="string">page</span> <span class="string">tags</span></span><br><span class="line"><span class="comment">#创建 分类，文件地址 source/categories/index.md</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">new</span> <span class="string">page</span> <span class="string">categories</span></span><br><span class="line"><span class="comment">#创建 链接，文件地址 source/link/index.md</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">new</span> <span class="string">page</span> <span class="string">link</span></span><br><span class="line"><span class="comment">#创建 关于，文件地址 source/about/index.md</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">new</span> <span class="string">page</span> <span class="string">about</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>打开标签、分类、链接 主页，在 <code>Front-matter</code> 分别添加 <code>type:&#39;tags&#39;</code>、 <code>type:&#39;categories&#39;</code>、 <code>type:&#39;link&#39;</code> 属性</li>
+</ol>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/2020/image-20200724192423637.png" alt="image-20200724192423637"></p>
+<ol start="3">
+<li>链接主页还需要创建 <code>source\_data\link.yml</code></li>
+</ol>
+<p>配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">class_name:</span> <span class="string">友情鏈接</span></span><br><span class="line">  <span class="attr">class_desc:</span> <span class="string">那些人，那些事</span></span><br><span class="line">  <span class="attr">link_list:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">JerryC</span></span><br><span class="line">      <span class="attr">link:</span> <span class="string">https://jerryc.me/</span></span><br><span class="line">      <span class="attr">avatar:</span> <span class="string">https://jerryc.me/image/avatar.png</span></span><br><span class="line">      <span class="attr">descr:</span> <span class="string">今日事,今日畢</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Hexo</span></span><br><span class="line">      <span class="attr">link:</span> <span class="string">https://hexo.io/zh-tw/</span></span><br><span class="line">      <span class="attr">avatar:</span> <span class="string">https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg</span></span><br><span class="line">      <span class="attr">descr:</span> <span class="string">快速、簡單且強大的網誌框架</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">class_name:</span> <span class="string">網站</span></span><br><span class="line">  <span class="attr">class_desc:</span> <span class="string">值得推薦的網站</span></span><br><span class="line">  <span class="attr">link_list:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Youtube</span></span><br><span class="line">      <span class="attr">link:</span> <span class="string">https://www.youtube.com/</span></span><br><span class="line">      <span class="attr">avatar:</span> <span class="string">https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png</span></span><br><span class="line">      <span class="attr">descr:</span> <span class="string">視頻網站</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Weibo</span></span><br><span class="line">      <span class="attr">link:</span> <span class="string">https://www.weibo.com/</span></span><br><span class="line">      <span class="attr">avatar:</span> <span class="string">https://i.loli.net/2020/05/14/TLJBum386vcnI1P.png</span></span><br><span class="line">      <span class="attr">descr:</span> <span class="string">中國最大社交分享平台</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Twitter</span></span><br><span class="line">      <span class="attr">link:</span> <span class="string">https://twitter.com/</span></span><br><span class="line">      <span class="attr">avatar:</span> <span class="string">https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png</span></span><br><span class="line">      <span class="attr">descr:</span> <span class="string">社交分享平台</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>关于 主页需要自己手动编写</p>
+</li>
+<li><p>配置 404, <code>butterfly.uml</code> 添加配置激活内置404页面：本地不会跳转，要查看可以直接访问：<code>http://localhost:4000/404.html</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">error_404:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">subtitle:</span> <span class="string">'Page Not Found'</span></span><br><span class="line">  <span class="attr">background:</span> <span class="comment">#背景图片</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<p>更多butterfly配置，请参考<a href="https://demo.jerryc.me/" target="_blank" rel="noopener">butterfly 文档</a></p>
+<hr>
+<h2 id="开启-Algolia-search，查询功能"><a href="#开启-Algolia-search，查询功能" class="headerlink" title="开启 Algolia search，查询功能"></a>开启 Algolia search，查询功能</h2><ol>
+<li><p>注册 Algolia账号</p>
+<p>官网：<a href="https://www.algolia.com/" target="_blank" rel="noopener">https://www.algolia.com/</a> </p>
+<p>根据提示 创建自己的 Application。点击Indices 创建 Indices</p>
+</li>
+</ol>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/image-20200723205459000.png" alt="image-20200723205459000"></p>
+<ol start="2">
+<li>如下图，点击 <code>New API Key</code> 创建API Key，ACLs 一定要选择<code>usage</code>, 图中其他的也推荐选择上</li>
+</ol>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/image-20200723221538361.png" alt=""></p>
+<p>查看 API Key</p>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/image-20200723221414406.png" alt=""></p>
+<ol start="3">
+<li>下载 algolia search ,<a href="">algolia search 文档</a></li>
+</ol>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g hexo-algoliasearch --save</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>配置 hexo <code>_config.yml</code></li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">algolia:</span></span><br><span class="line">  <span class="attr">appId:</span> <span class="string">"Application ID"</span></span><br><span class="line">  <span class="attr">apiKey:</span> <span class="string">"API Key"</span></span><br><span class="line">  <span class="attr">adminApiKey:</span> <span class="string">"Admin API Key"</span></span><br><span class="line">  <span class="attr">chunkSize:</span> <span class="number">5000</span></span><br><span class="line">  <span class="attr">indexName:</span> <span class="string">"indices 名称"</span></span><br><span class="line">  <span class="attr">fields:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">content:strip:truncate,0,500</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">excerpt:strip</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">gallery</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">permalink</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">photos</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">slug</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">tags</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">title</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>配置<code>butterfly.yml</code></li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Algolia search 开启</span></span><br><span class="line"><span class="attr">algolia_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="评论功能，启用gitalk"><a href="#评论功能，启用gitalk" class="headerlink" title="评论功能，启用gitalk"></a>评论功能，启用gitalk</h2><p><a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener">gittalk文档</a> </p>
+<ol>
+<li>安装</li>
+</ol>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g --save gitalk</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>需要创建 <strong>OAuth application</strong>，如果没有 <a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">点击这里申请</a>。</li>
+</ol>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/image-20200724001228709.png" alt="image-20200724001228709"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Application name: 应用名称</span><br><span class="line">Homepage URL:主页地址，部署用的和测试用的不一样，测试是：http:&#x2F;&#x2F;localhost:4000&#x2F;</span><br><span class="line">Authorization callback URL: 验证回调地址，和主页一样。</span><br></pre></td></tr></table></figure>
+
+<p>注册成功后，可以在 <code>Settings/Devloper settings</code> 下点开你的应用名称，查看详情，如下</p>
+<p><img src= "https://gitee.com/yhsx29/File/raw/master/img/sys/loading.gif" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/image-20200724002457538.png" alt="image-20200724002457538"></p>
+<ol start="3">
+<li>配置<code>butterfly.yml</code></li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gitalk:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 正式</span></span><br><span class="line">  <span class="attr">client_id:</span> <span class="comment"># OAuth application Client ID</span></span><br><span class="line">  <span class="attr">client_secret:</span> <span class="comment"># OAuth application Client Sercret</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="comment"># GitHub repository 名称,推荐用 hexo 部署到的仓库名称</span></span><br><span class="line">  <span class="attr">owner:</span> <span class="comment"># GitHub repository 所有者</span></span><br><span class="line">  <span class="attr">admin:</span> <span class="comment"># GitHub repository 的所有者和合作者 (对这个 repository 有写权限的用户)。</span></span><br><span class="line">  <span class="attr">language:</span> <span class="string">zh-CN</span> <span class="comment"># en, zh-CN, zh-TW, es-ES, fr, ru</span></span><br><span class="line">  <span class="attr">perPage:</span> <span class="number">10</span> <span class="comment"># Pagination size, with maximum 100.</span></span><br><span class="line">  <span class="attr">distractionFreeMode:</span> <span class="literal">false</span> <span class="comment"># Facebook-like distraction free mode.</span></span><br><span class="line">  <span class="attr">pagerDirection:</span> <span class="string">last</span> <span class="comment"># Comment sorting direction, available values are last and first.</span></span><br><span class="line">  <span class="attr">createIssueManually:</span> <span class="literal">false</span> <span class="comment"># Gitalk will create a corresponding github issue for your every single page automatically</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span> <span class="comment"># dispaly comment count in top_img</span></span><br></pre></td></tr></table></figure>
+
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">萤火虫</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yhsx29.gitee.io/hexo/pages/hexo/self-blog/">https://yhsx29.gitee.io/hexo/pages/hexo/self-blog/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yhsx29.gitee.io/hexo" target="_blank">萤火虫</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/hexo/tags/Github/">Github</a><a class="post-meta__tags" href="/hexo/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/hexo/tags/Butterfly/">Butterfly</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/yhsx29/File/raw/master/img/sys/home.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/hexo/pages/hexo/npm-install/"><img class="prev-cover" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/home.jpg" onerror="onerror=null;src='https://gitee.com/yhsx29/File/raw/master/img/sys/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">NPM 的安装与使用</div></div></a></div><div class="next-post pull-right"><a href="/hexo/pages/markdown/markdown-use/"><img class="next-cover" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/home.jpg" onerror="onerror=null;src='https://gitee.com/yhsx29/File/raw/master/img/sys/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MarkDown的使用</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/hexo/pages//github/git-sshs/" title="创建多个SSH"><img class="relatedPosts_cover" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/home.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-25</div><div class="relatedPosts_title">创建多个SSH</div></div></a></div><div class="relatedPosts_item"><a href="/hexo/pages//github/git-install/" title="Git的安装与使用"><img class="relatedPosts_cover" data-src="https://gitee.com/yhsx29/File/raw/master/img/sys/home.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-24</div><div class="relatedPosts_title">Git的安装与使用</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '1f7434298429bc2a8405',
+  clientSecret: '1e636f66bb98e5b4c682a22043f7f20971db7434',
+  repo: 'yhsx29.github.io',
+  owner: 'yhsx29',
+  admin: ['yhsx29'],
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN',
+  perPage: 10,
+  distractionFreeMode: false,
+  pagerDirection: 'last',
+  createIssueManually: false,
+  updateCountCallback: commentCount
+})
+gitalk.render('gitalk-container')
+
+function commentCount(n){
+  try {
+    document.getElementsByClassName('gitalk-comment-count')[0].innerHTML= n
+  } catch (e) {
+    return false
+  }
+}</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By 萤火虫</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text"><herf>欢迎光临</herf> 多谢指教</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">简</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/hexo/js/utils.js"></script><script src="/hexo/js/main.js"></script><script src="/hexo/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/hexo/js/third-party/click_heart.js"></script><script src="/hexo/js/search/algolia.js"></script><script>if (document.getElementsByClassName('mermaid').length) {
+  loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',function () {
+    mermaid.initialize({
+      theme: 'default',
+  })
+})
+}</script></body></html>
